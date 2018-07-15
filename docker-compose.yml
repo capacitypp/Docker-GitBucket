@@ -16,4 +16,10 @@ services:
                 environment:
                         POSTGRES_USER: gitbucket
                         POSTGRES_PASSWORD: gitbucket
+        backup:
+                build: ./backup
+                restart: always
+                container_name: backup
+                volumes:
+                 - /opt/gitbucket/backup:/root/backup
 
