@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+        gitbucket:
+                build: ./gitbucket
+                restart: always
+                container_name: gitbucket
+                ports:
+                 - 8084:8080
+                volumes:
+                 - /opt/gitbucket/.gitbucket:/root/.gitbucket
+        postgres:
+                build: ./postgres
+                restart: always
+                container_name: postgres
+                environment:
+                        POSTGRES_USER: gitbucket
+                        POSTGRES_PASSWORD: gitbucket
+
